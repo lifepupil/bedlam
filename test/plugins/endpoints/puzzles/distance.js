@@ -16,7 +16,7 @@ var after = lab.after;
 
 var server;
 
-describe('GET /puzzles/vowelCount/{word}', function(){
+describe('GET /puzzles/distance/{coords}', function(){
   before(function(done){
     Server.init(function(err, srvr){
       if(err){ throw err; }
@@ -32,11 +32,19 @@ describe('GET /puzzles/vowelCount/{word}', function(){
   });
 
   it('should take (0,0)(1,1) and output 1', function(done){
-    server.inject({method: 'GET', url: '/puzzles/vowelCount/(0,0)(1,1)', credentials: {_id: 3}}, function(response){
+    server.inject({method: 'GET', url: '/puzzles/distance/(0,0)(1,1)', credentials: {_id: 3}}, function(response){
       expect(response.statusCode).to.equal(200);
-      expect(response.result.count).to.equal(1);
+      expect(response.result.distance).to.equal(1.4142135623730951);
       done();
     });
   });
+  //
+  // it('should take (0,0)(1,1) and output 1', function(done){
+  //   server.inject({method: 'GET', url: '/puzzles/vowelCount/(0,0)(1,1)', credentials: {_id: 3}}, function(response){
+  //     expect(response.statusCode).to.equal(200);
+  //     expect(response.result.count).to.equal(1);
+  //     done();
+  //   });
+  // });
 
 });
