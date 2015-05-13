@@ -38,4 +38,20 @@ describe('GET /puzzles/isPalindrome/{word}', function(){
       done();
     });
   });
+
+  it('should take beer and output false', function(done){
+    server.inject({method: 'GET', url: '/puzzles/isPalindrome/beer', credentials: {_id: 3}}, function(response){
+      expect(response.statusCode).to.equal(200);
+      expect(response.result).to.equal(false);
+      done();
+    });
+  });
+
+  it('should take 12321 and output true', function(done){
+    server.inject({method: 'GET', url: '/puzzles/isPalindrome/12321', credentials: {_id: 3}}, function(response){
+      expect(response.statusCode).to.equal(200);
+      expect(response.result).to.equal(true);
+      done();
+    });
+  });
 });
