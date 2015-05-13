@@ -16,7 +16,7 @@ var after = lab.after;
 
 var server;
 
-describe('GET /math/square/3', function(){
+describe('GET /math/square/{num}', function(){
   before(function(done){
     Server.init(function(err, srvr){
       if(err){ throw err; }
